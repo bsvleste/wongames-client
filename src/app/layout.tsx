@@ -1,8 +1,15 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import StyledComponentsRegistry from '@/lib/registry'
 import { Providers } from './providers'
-const inter = Inter({ subsets: ['latin'] })
+const poppins = Poppins({
+  weight: ['300', '400', '600'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins'
+
+})
 export const metadata: Metadata = {
   title: 'React Avançado',
   description: 'Boilerplate react avançado'
@@ -14,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={poppins.variable}>
         <StyledComponentsRegistry>
           <Providers>{children}</Providers>
         </StyledComponentsRegistry>

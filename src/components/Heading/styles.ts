@@ -1,13 +1,22 @@
 import styled, { DefaultTheme, css } from 'styled-components'
 import media from 'styled-media-query'
-import { HeadingProps } from '.'
+import { HeadingProps, LineColors } from '.'
 
 const wrapperModifiers ={
-  lineLeft:(theme:DefaultTheme)=>css`
-    padding-left: ${theme.spacings.xxsmall };
-    border-left: 0.7rem solid  ${theme.colors.secondary} ; 
+  small:(theme:DefaultTheme,lineColor:LineColors)=>css`
+    font-size: ${theme.spacings.xsmall};
+    &::after{
+      width: 3rem;
+      border-bottom: 0.3rem solid ${theme.colors[lineColor]};
+    }
+    `,
+    medium:(theme:DefaultTheme)=>css`
+    font-size: ${theme.spacings.xlarge};
+    ${media.greaterThan('medium')`
+    font-size: ${theme.font.sizes.xxlarge};
+    `}
   `,
-  lineBottom:(theme:DefaultTheme)=>css`
+  lineBottom:(theme:DefaultTheme,lineColor:LineColors)=>css`
     position:relative;
     margin-bottom: ${theme.spacings.medium};
 
@@ -17,20 +26,20 @@ const wrapperModifiers ={
       bottom: -1rem;
       content:'';
       width: 5rem;
-      border-bottom: 0.5rem solid ${theme.colors.primary};
+      border-bottom: 0.5rem solid ${theme.colors[lineColor]};
     }
-
   `,
+  lineLeft:(theme:DefaultTheme,lineColor:LineColors)=>css`
+    padding-left: ${theme.spacings.xxsmall };
+    border-left: 0.7rem solid  ${theme.colors[lineColor]} ; 
+  `,  
 }
 
 export const Wrapper = styled.h2<HeadingProps>`
-  ${({theme,color,lineLeft,lineBottom})=>css`
-  font-size: ${theme.font.sizes.xlarge};
+  ${({theme,color,lineLeft,lineBottom,lineColor,size})=>css`
   color: ${theme.colors[color!]};
-  ${lineLeft && wrapperModifiers.lineLeft(theme)}
-  ${lineBottom && wrapperModifiers.lineBottom(theme)}
-  ${media.greaterThan('medium')`
-    font-size: ${theme.font.sizes.xxlarge};
-    `}
+  ${lineLeft && wrapperModifiers.lineLeft(theme,lineColor!)}
+  ${lineBottom && wrapperModifiers.lineBottom(theme,lineColor!)}
+  ${!!size && wrapperModifiers[size](theme,lineColor!)}
   `}
 `

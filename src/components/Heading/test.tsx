@@ -4,18 +4,18 @@ import Heading from '.'
 import { renderWithTheme } from '@/utils/test/helper'
 
 describe('<Heading />', () => {
-  it('should render a white heading by default', () => {
+  it('should render a black heading by default', () => {
     renderWithTheme(<Heading>Most Popular</Heading>)
     expect(screen.getByRole('heading', { name: /most popular/i }))
       .toHaveStyle({
-        color: "#FAFAFA"
+        color: "#030517"
       })
   })
-  it('should render a black heading when color is passed', () => {
-    renderWithTheme(<Heading color="black">Most Popular</Heading>)
+  it('should render a white heading when color is passed', () => {
+    renderWithTheme(<Heading color="white">Most Popular</Heading>)
     expect(screen.getByRole('heading', { name: /most popular/i }))
       .toHaveStyle({
-        color: "#030517"
+        color: "#FAFAFA"
       })
   })
   it('should render a lineLeft heading when lineleft is passed', () => {

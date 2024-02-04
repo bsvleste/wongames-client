@@ -2,7 +2,6 @@ import styled,{css} from 'styled-components'
 import { HighlightProps } from '.'
 import media from 'styled-media-query'
 type WrapperProps = Pick<HighlightProps,"backgroundImage"|"aligment">
-
 const wrapperModifiers={
   right:()=>css`
     grid-template-areas: 'floatimage content';

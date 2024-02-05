@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import StyledComponentsRegistry from '@/lib/registry'
 import { Providers } from './providers'
+
 const poppins = Poppins({
   weight: ['300', '400', '600'],
   style: ['normal', 'italic'],

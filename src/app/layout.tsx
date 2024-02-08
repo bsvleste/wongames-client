@@ -12,8 +12,8 @@ const poppins = Poppins({
 
 })
 export const metadata: Metadata = {
-  title: 'React Avançado',
-  description: 'Boilerplate react avançado'
+  title: 'Won Games',
+  description: 'Won games'
 }
 export default function RootLayout({
   children

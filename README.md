@@ -1,20 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+// GetStaticPaths
+  export async function generateStaticParams() {
+    return [{ id: '1' }, { id: '2' }]
+  }
 
-## Getting Started
+  export default async function Page() {
+    // This request should be cached until manually invalidated.
+    // Similar to `getStaticProps`.
+    // `force-cache` is the default and can be omitted.
+    const staticData = await fetch(`https://...`, { cache: 'force-cache' })
 
-First, run the development server:
+    // This request should be refetched on every request.
+    // Similar to `getServerSideProps`.
+    const dynamicData = await fetch(`https://...`, { cache: 'no-store' })
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    // This request should be cached with a lifetime of 10 seconds.
+    // Similar to `getStaticProps` with the `revalidate` option.
+    const revalidatedData = await fetch(`https://...`, {
+      next: { revalidate: 10 },
+    })
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    return <div>...</div>
+  }
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

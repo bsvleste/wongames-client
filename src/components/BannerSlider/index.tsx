@@ -1,3 +1,5 @@
+'use client'
+import { Suspense } from 'react'
 import Banner, { BannerProps } from '../Banner'
 import Slider, { SliderSettings } from '../Slider'
 import * as S from './styles'
@@ -21,16 +23,18 @@ const settings: SliderSettings = {
   ]
 }
 const BannerSlider = ({ items }: BannerSldierProps) => (
-  <S.Wrapper>
-    <Slider settings={settings}>
-      {items.map(item => (
-        <Banner
-          key={item.title}
-          {...item}
-        />
-      ))}
-    </Slider>
-  </S.Wrapper>
+  <Suspense>
+    <S.Wrapper>
+      <Slider settings={settings}>
+        {items.map(item => (
+          <Banner
+            key={item.title}
+            {...item}
+          />
+        ))}
+      </Slider>
+    </S.Wrapper>
+  </Suspense>
 )
 
 export default BannerSlider

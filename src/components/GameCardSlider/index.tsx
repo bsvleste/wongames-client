@@ -3,11 +3,12 @@ import { ArrowForwardIos as ArrowRight } from '@styled-icons/material-outlined/A
 import GameCard, { GameCardProps } from '../GameCard'
 import * as S from './styles'
 import Slider, { SliderSettings } from '../Slider'
-export type GameCardSliderProps ={
-  items:GameCardProps  []
+import { Suspense } from 'react'
+export type GameCardSliderProps = {
+  items: GameCardProps[]
   color?: 'white' | 'black'
 }
-const settings:SliderSettings ={
+const settings: SliderSettings = {
   slidesToShow: 4,
   infinite: false,
   lazyLoad: 'ondemand',
@@ -44,17 +45,19 @@ const settings:SliderSettings ={
   nextArrow: <ArrowRight aria-label="next games" />,
   prevArrow: <ArrowLeft aria-label="previous games" />
 }
-const GameCardSlider = ({items,color="black"}:GameCardSliderProps) => (
-<S.Wrapper color={color}>
-  <Slider settings={settings}>
-    {items.map(item=>(
-       <GameCard
-       key={item.title}
-       {...item}
-     />
-    ))}
-  </Slider>
-</S.Wrapper>
+const GameCardSlider = ({ items, color = "black" }: GameCardSliderProps) => (
+  <Suspense>
+    <S.Wrapper color={color}>
+      <Slider settings={settings}>
+        {items.map(item => (
+          <GameCard
+            key={item.title}
+            {...item}
+          />
+        ))}
+      </Slider>
+    </S.Wrapper>
+  </Suspense>
 )
 
 export default GameCardSlider

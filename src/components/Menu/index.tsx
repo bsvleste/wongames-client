@@ -1,3 +1,4 @@
+'use client'
 import { Menu2 as MenuIcon } from '@styled-icons/remix-line/Menu2'
 import { ShoppingCart } from '@styled-icons/material-outlined/ShoppingCart'
 import { Search as SearcrhIcon } from '@styled-icons/material-outlined/Search'

@@ -8,14 +8,14 @@ describe('<Heading />', () => {
     renderWithTheme(<Heading>Most Popular</Heading>)
     expect(screen.getByRole('heading', { name: /most popular/i }))
       .toHaveStyle({
-        color: "#030517"
+        color: "#FAFAFA"
       })
   })
   it('should render a white heading when color is passed', () => {
-    renderWithTheme(<Heading color="white">Most Popular</Heading>)
+    renderWithTheme(<Heading color="black">Most Popular</Heading>)
     expect(screen.getByRole('heading', { name: /most popular/i }))
       .toHaveStyle({
-        color: "#FAFAFA"
+        color: "#030517"
       })
   })
   it('should render a lineLeft heading when lineleft is passed', () => {

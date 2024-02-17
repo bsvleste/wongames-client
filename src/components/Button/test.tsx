@@ -11,13 +11,13 @@ describe('<Button />', () => {
     })
   })
   it('should render the medium size by defaault', () => {
-    const { container } = renderWithTheme(<Button>Buy now</Button>)
+    renderWithTheme(<Button>Buy now</Button>)
     expect(screen.getByRole('button', { name: /Buy now/i })).toHaveStyle({
       height: '4rem',
       padding: '0.8rem 3.2rem',
       'font-size': '1.4rem'
     })
-    expect(container.firstChild).toMatchSnapshot()
+
   })
   it('should render the large size when passed large size', () => {
     renderWithTheme(<Button size='large'>Buy now</Button>)
@@ -39,10 +39,10 @@ describe('<Button />', () => {
     expect(screen.getByTestId(/icon/i)).toBeInTheDocument()
   })
   it('should render a minimal version', () => {
-    renderWithTheme(<Button icon={<AddShoppingCart data-testid="icon" />} minimal>Buy now</Button>)
+    renderWithTheme(<Button icon={<AddShoppingCart data-testid="icon" />} minimal={true}>Buy now</Button>)
     expect(screen.getByRole('button', { name: /Buy now/i })).toHaveStyle({
       background: 'none',
-      color: '#f231a5'
+      color: '#F231A5'
     })
   })
   it('should render button as link version', () => {

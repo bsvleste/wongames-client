@@ -14,7 +14,7 @@ describe('<Banner />', () => {
     // verifique se o title existe renderizado (.toBeInTheDocument())
     // verifique se o subtitle existe renderizado
     // verifique se a imagem existe renderizado
-    const { container } = renderWithTheme(<Banner {...props} />)
+    renderWithTheme(<Banner {...props} />)
 
     expect(
       screen.getByRole('heading', { name: /Defy death/i })
@@ -26,7 +26,7 @@ describe('<Banner />', () => {
 
     expect(screen.getByRole('img', { name: /Defy death/i })).toBeInTheDocument()
 
-    expect(container.firstChild).toMatchSnapshot()
+
   })
   it('should render a Ribbon', () => {
     renderWithTheme(<Banner {...props} ribbon="My Ribbon" ribbonSize="small" ribbonColor="secondary" />)

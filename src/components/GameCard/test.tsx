@@ -10,7 +10,7 @@ const props = {
 }
 describe('<GameCard />', () => {
   it('should render the correctly', () => {
-    renderWithTheme(<GameCard {...props} />)
+    const { container } = renderWithTheme(<GameCard {...props} />)
     //verifica se o title esta sendo renderizado   
     expect(screen.getByRole('heading', { name: props.title })).toBeInTheDocument()
     //verifica se o developer eta sendo renderizado
@@ -22,6 +22,7 @@ describe('<GameCard />', () => {
       'src',
       props.img
     )
+    expect(container.firstChild).toMatchSnapshot()
   })
   it('should render price in label', () => {
     renderWithTheme(<GameCard {...props} />)

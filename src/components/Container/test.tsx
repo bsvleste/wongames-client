@@ -9,5 +9,6 @@ describe('<Container />', () => {
       "max-width",
       theme.grid.container
     )
+    expect(container.firstChild).toMatchSnapshot()
   })
 })

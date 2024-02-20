@@ -5,7 +5,7 @@ import { renderWithTheme } from '@/utils/test/helper'
 
 describe('<Footer />', () => {
   it('should render 4 column topics', () => {
-    renderWithTheme(<Footer />)
+    const { container } = renderWithTheme(<Footer />)
 
     expect(
       screen.getByRole('heading', { name: /contact us/i })
@@ -20,7 +20,7 @@ describe('<Footer />', () => {
     expect(
       screen.getByRole('heading', { name: /location/i })
     ).toBeInTheDocument()
-
+    expect(container.firstChild).toMatchSnapshot()
 
   })
 })
